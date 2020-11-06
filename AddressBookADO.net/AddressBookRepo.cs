@@ -216,5 +216,69 @@ namespace AddressBookADO.net
                 connection.Close();
             }
         }
+        /// <summary>
+        /// UC 7:
+        /// Gets size by city name
+        /// </summary>
+        /// <returns></returns>
+        public bool GetSizeByCity()
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    connection.Open();
+                    string query = @"select City,count(City) as CitySize from address_book group by City";
+                    SqlCommand command = new SqlCommand(query, this.connection);
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        /// <summary>
+        /// UC 7:
+        /// Gets size by state name
+        /// </summary>
+        /// <returns></returns>
+        public bool GetSizeByState()
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    connection.Open();
+                    string query = @"select State,count(State) as StateSize from address_book group by State";
+                    SqlCommand command = new SqlCommand(query, this.connection);
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

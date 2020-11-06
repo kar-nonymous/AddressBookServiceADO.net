@@ -37,6 +37,10 @@ namespace AddressBookADO.net
             addressBookRepo.DeleteContact();
             /// Calling the GetPersonByCityOrState method
             addressBookRepo.GetPersonByCityOrState();
+            ///Calling the GetSizeByCity method
+            addressBookRepo.GetSizeByCity();
+            ///Calling the GetSizeByState method
+            addressBookRepo.GetSizeByState();
         }
     }
 }
