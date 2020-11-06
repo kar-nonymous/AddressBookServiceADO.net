@@ -17,22 +17,26 @@ namespace AddressBookADO.net
             AddressBookRepo addressBookRepo = new AddressBookRepo();
             /// Calling the GetAllEntries method from AddressBookRepo class
             addressBookRepo.GetAllEntries();
-            AddressBookModel model = new AddressBookModel();
-            model.FirstName = "Shashank";
-            model.LastName = "Singh";
-            model.Address = "Techman City";
-            model.City = "Mathura";
-            model.State = "Uttar Pradesh";
-            model.Zip = 281006;
-            model.PhoneNo = 8265800789;
-            model.Email = "shashank.singh@gmail.com";
-            model.AddressBookName = "Kartikeya";
-            model.ContactType = "Friends";
+            AddressBookModel model = new AddressBookModel
+            {
+                FirstName = "Shashank",
+                LastName = "Singh",
+                Address = "Techman City",
+                City = "Mathura",
+                State = "Uttar Pradesh",
+                Zip = 281006,
+                PhoneNo = 8265800789,
+                Email = "shashank.singh@gmail.com",
+                AddressBookName = "Kartikeya",
+                ContactType = "Friends"
+            };
             Console.WriteLine(addressBookRepo.AddContact(model) ? "Record inserted successfully " : "Failed");
             /// Calling the update contact method
             addressBookRepo.UpdateContact();
             /// Calling the DeleteContact method
             addressBookRepo.DeleteContact();
+            /// Calling the GetPersonByCityOrState method
+            addressBookRepo.GetPersonByCityOrState();
         }
     }
 }
