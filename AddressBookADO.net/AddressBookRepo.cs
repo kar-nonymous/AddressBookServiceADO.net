@@ -105,5 +105,34 @@ namespace AddressBookADO.net
                 throw new Exception(ex.Message);
             }
         }
+        /// <summary>
+        /// UC 4:
+        /// Updates the contact details with name
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool UpdateContact(AddressBookModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    connection.Open();
+                    string query = @"update address_book set Zip=281006 where FirstName=Kumar";
+                    SqlCommand command = new SqlCommand(query, this.connection);
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

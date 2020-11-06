@@ -29,6 +29,8 @@ namespace AddressBookADO.net
             model.AddressBookName = "Kartikeya";
             model.ContactType = "Friends";
             Console.WriteLine(addressBookRepo.AddContact(model) ? "Record inserted successfully " : "Failed");
+            ///Calling the update contact method
+            addressBookRepo.UpdateContact(model);
         }
     }
 }
