@@ -111,7 +111,7 @@ namespace AddressBookADO.net
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool UpdateContact(AddressBookModel model)
+        public bool UpdateContact()
         {
             try
             {
@@ -132,6 +132,43 @@ namespace AddressBookADO.net
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        /// <summary>
+        /// UC 5:
+        /// Delete contact from table with given name
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool DeleteContact()
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    connection.Open();
+                    string query = @"delete from address_book where FirstName=Steven";
+                    SqlCommand command = new SqlCommand(query, this.connection);
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }
